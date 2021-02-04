@@ -1684,7 +1684,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
 
             if (!insideHref && !wrappedInAnchors)
             {
-                NSString *wrappedURL = [NSString stringWithFormat:@"<a href='%@'>%@</a>", match.URL.absoluteString, match.URL.absoluteString];
+                NSString *wrappedURL = [NSString stringWithFormat:@"<a href='%@'>%@</a>", match.URL.absoluteString, [match.URL.absoluteString stringByReplacingOccurrencesOfString:@"mailto:" withString:@""]];
                 text = [text stringByReplacingCharactersInRange:match.range
                                                      withString:wrappedURL];
                 matchLength = wrappedURL.length;
